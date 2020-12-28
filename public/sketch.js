@@ -2,7 +2,7 @@ var socket
 
 function setup() {
   createCanvas(500,500);
-  socket = io.connect("http://localhost:3000");
+  var io = require('socket.io').listen(server);
   background(50);
 }
 
