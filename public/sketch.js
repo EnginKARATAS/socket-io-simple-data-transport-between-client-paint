@@ -7,7 +7,7 @@ var socket;
 
 function setup() {
   createCanvas(400, 400);
-  background(0);
+  background(200,222,20);
   // Start a socket connection to the server
   socket = io.connect('http://localhost:3000');
 

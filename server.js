@@ -21,7 +21,6 @@ function newConnection(socket) {
   //when mouse message comes, socket.on('mouse',mouseMsg) working
   socket.on('mouse',mouseMsg)
 
-
   function mouseMsg(data){
     console.log(data);
     socket.broadcast.emit('mouse',data);
