@@ -17,6 +17,11 @@ let io = socket(server);
 io.sockets.on('connection', newConnection);
 
 function newConnection(socket) {
+  send('new_client', socket.id)
+  
+  function send(vareible,message){
+    socket.broadcast.emit(vareible,message);
+  }
   console.log("socket id : "+ socket.id);
   //when mouse message comes, socket.on('mouse',mouseMsg) working
   socket.on('mouse',mouseMsg)

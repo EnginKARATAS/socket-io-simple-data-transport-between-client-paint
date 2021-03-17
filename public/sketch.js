@@ -4,27 +4,39 @@
 
 // Keep track of our socket connection
 var socket;
-
+var boarder;
+var player;
 function setup() {
   createCanvas(400, 400);
-  background(200,222,20);
   // Start a socket connection to the server
   socket = io.connect('http://localhost:3000');
 
+
+    socket.on('new_client', client =>{
+      boarder.addClientToBoarder(client);
+    });
+  
   socket.on('mouse',
     // When we receive data
     function(data) {
       console.log("respond: " + data.y + " " + data.y);
       // Draw a blue circle
       fill(0,0,255);
-      noStroke();
+      noStroke();                      
       ellipse(data.x, data.y, 20, 20);
     }
   );
-  
+
+  boarder = new Boarder();
+  player = new Player();
+
 }
 
 function draw() {
+  background(200,222,20);
+  
+  boarder.showBoarder();
+  player.show();
   // Nothing
 }
 
